@@ -1,23 +1,15 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:21-alpine'
-        }
+    agent any
+    parameters {
+        text(name:'PERSONNE',defaultValue:'Mme BOUDIA',description:'Hello amera')
+        choice(name:'CHOIX',choices:['un','deux','trois'])
     }
-
     stages {
         stage ('build') {
             steps {
-             sh 'npm -v'
+              echo "la personne est : ${PERSONNE}"
+              echo "Son choix est : ${CHOIX}"
             }
-        }
-    }
-    post {
-        always {
-            echo 'always !'
-        }
-        success {
-            echo 'success !'
         }
     }
 }
