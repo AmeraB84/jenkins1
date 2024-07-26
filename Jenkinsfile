@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DEPLOY_TO = false
+        DEPLOY_TO = true
     }
     stages {
         stage ('build') {
