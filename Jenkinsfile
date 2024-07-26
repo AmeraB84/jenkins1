@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        DEPLOY_TO : false
+    }
     stages {
         stage ('build') {
             steps {
@@ -8,14 +10,8 @@ pipeline {
             }
         }
         stage ('deployment production') {
-            input {
-                message 'Would you deploy this version ?'
-                ok 'Deployer !'
-                submitter 'admin,devops'
-                submitterParameter 'USER'
-                parameters {
-                    string(name:'VERSION',defaultValue:'version1',description:'une version')
-                }
+            when {
+                environment name: DEPLY_TO , value: true
             }
             steps {
                 echo "${VERSION} Deployed by ${USER}"
