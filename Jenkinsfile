@@ -4,7 +4,7 @@ pipeline {
         DEPLOY_TO = 'prod'
     }
     parameters {
-        sring(name: 'TEST' , defaultValue:'Tests unitaires' , description:'test description')
+        string(name: 'TEST' , defaultValue:'Tests unitaires' , description:'test description')
     }
     stages {
         stage ('build') {
