@@ -13,10 +13,13 @@ pipeline {
             }
         }
         stage ('deployment production') {
-            allOf {
+            when {
+              allOf {
                 environment name: 'DEPLOY_TO' , value: 'prod'
                 equals expected : 'Tests unitaires' , actual : params.TEST
+            }  
             }
+
             steps {
                 echo "Deploy !!!"
             }
