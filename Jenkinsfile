@@ -14,7 +14,7 @@ pipeline {
                 environment name: 'DEPLOY_TO' , value: 'prod'
             }
             steps {
-                echo "${VERSION} Deployed by ${USER}"
+                echo "Deploy !!!"
             }
 }
     }
