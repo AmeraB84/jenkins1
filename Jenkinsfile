@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DEPLOY_TO = true
+        DEPLOY_TO = 'prod'
     }
     stages {
         stage ('build') {
@@ -11,7 +11,7 @@ pipeline {
         }
         stage ('deployment production') {
             when {
-                expression { env.DEPLOY_TO == true }
+                expression { env.DEPLOY_TO == 'prod' }
             }
             steps {
                 echo "${VERSION} Deployed by ${USER}"
