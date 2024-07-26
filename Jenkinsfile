@@ -11,7 +11,7 @@ pipeline {
         }
         stage ('deployment production') {
             when {
-                expression { env.DEPLOY_TO }
+                expression { env.DEPLOY_TO == true }
             }
             steps {
                 echo "${VERSION} Deployed by ${USER}"
